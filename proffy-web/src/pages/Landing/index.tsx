@@ -5,6 +5,8 @@ import studyIcon from '../../assets/images/icons/study.svg'
 import givClassIcon from '../../assets/images/icons/give-classes.svg'
 import purpleIcon from '../../assets/images/icons/purple-heart.svg'
 
+import { Link } from 'react-router-dom'
+
 // Css
 import './styles.css'
 
@@ -26,15 +28,15 @@ function Landing(){
                 />
 
                 <div className="buttons-container">
-                    <a href="" className = 'study'>
+                    <Link to ="/study" className = 'study'>
                         <img src= {studyIcon} alt="Estudar"/>
                         Estudar
-                    </a>
+                    </Link>
 
-                    <a href="" className = 'give-class'>
+                    <Link to="/give-class" className = 'give-class'>
                         <img src= {givClassIcon} alt="Dar aulas"/>
                         Dar aulas
-                    </a>
+                    </Link>
                 </div>
 
                 <span className = 'total-connections'>
