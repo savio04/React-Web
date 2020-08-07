@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import Logo from '../../assets/images/logo.svg'
 import landingImg from '../../assets/images/landing.svg'
 import studyIcon from '../../assets/images/icons/study.svg'
@@ -9,10 +9,26 @@ import { Link } from 'react-router-dom'
 
 // Css
 import './styles.css'
+import api from '../../services/api'
 
 
 
 function Landing(){
+
+    // Consumindo api com axios
+
+    const[totalConnections,settotalConnections] = useState(0)
+
+    // useEffect é exucutado toda vez que a pagina é recarregada
+    useEffect(() => {
+        api.get('/connections').then(response => {
+            const {total} = response.data
+            settotalConnections(total)
+        })
+    }, [])
+
+    // consumindo api com axios
+
     return(
         <div id = 'page-landing'>
             <div id = 'page-landing-content' className="contianer">
@@ -40,7 +56,7 @@ function Landing(){
                 </div>
 
                 <span className = 'total-connections'>
-                    Total de 200 conexões ja realizadas
+                    Total de {totalConnections} conexões ja realizadas
                     <img src= {purpleIcon} alt="coração roxos"/>
                 </span>
             </div>

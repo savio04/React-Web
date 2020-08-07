@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 import './styles.css'
 
 interface PageHeaderprops{
-    title: string
+    title: string,
+    description?: string
 }
 
 const PageHeader:React.FC<PageHeaderprops> = (props) => {
@@ -20,8 +21,12 @@ const PageHeader:React.FC<PageHeaderprops> = (props) => {
 
         <div className="header-content">
             <strong> {props.title} </strong>
+            {props.description && <p>{props.description}</p>} 
+            {/* Forma acima abreviada de uma renderiação condicional */}
+
             {props.children}
         </div>
+
     </header>
     )
 }
